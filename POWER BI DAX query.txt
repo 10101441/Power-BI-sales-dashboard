@@ -1,0 +1,23 @@
+## I have used thsese  POWER BI DAX Query to find the new measure 
+
+
+Profit Margin % = DIVIDE([Total profit margin],[Revenue])
+
+
+Revenue = SUM('transaction'[sales_amount])
+
+sales_quantity = SUM('transaction'[sales_qty])
+
+
+Taget diff = [Profit Margin %]-'Profit target'[Profit target Value]
+
+
+Total profit margin = SUM('transaction'[profit_margin])
+
+
+Profit contribution % = DIVIDE([Total profit margin],CALCULATE([Total profit margin],ALL(products),ALL(customer),ALL(market)))
+
+Revenue contribution % = DIVIDE([Revenue],CALCULATE([Revenue],ALL(market),ALL(products),ALL(customer)))
+
+
+REVENUE LY = CALCULATE([Revenue],SAMEPERIODLASTYEAR('date (2)'[date]))
